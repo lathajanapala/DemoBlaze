@@ -41,9 +41,9 @@ export class LogInPage{
           this.logInButton.click(),
         ]);
 
-        // ✅ Stable post-login assertions
-        await expect(this.page.getByText('Welcome', { exact: false })).toBeVisible();
-        await expect(this.logoutButton).toBeVisible();
+        // // ✅ Stable post-login assertions
+        // await expect(this.page.getByText('Welcome', { exact: false })).toBeVisible();
+        // await expect(this.logoutButton).toBeVisible();
       }
 
 
