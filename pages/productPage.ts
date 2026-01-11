@@ -42,7 +42,7 @@ export class ProductPage {
     }
     async addToCart(producttitle:string){
         while(true){
-        const product =  this.productTitles.filter({hasText:producttitle});
+        const product =  this.productTitles.filter({hasText: new RegExp(`^${producttitle}$`, 'i')});
         if(await product.count()>0){
             const firstProduct = product.first();
             await firstProduct.scrollIntoViewIfNeeded();
@@ -72,4 +72,16 @@ export class ProductPage {
     }
 }
 }
+async addMultipleProductsToCart(products: string[]) {
+    const addedProducts: string[] = [];
+    for (const title of products) {
+      // Always start from a known state
+      await this.page.goto('https://www.demoblaze.com/index.html');
+      await expect(this.productTitles.first()).toBeVisible();
+
+      await this.addToCart(title);
+      addedProducts.push(title)
+    }
+    return addedProducts;
+  }
 }
