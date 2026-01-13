@@ -51,7 +51,7 @@ test("Extract price as numbers instead of strings", async ({ page }) => {
     expect(priceNumbers).toEqual([300, 500, 300, 3000, 2000, 1000])
 })
 test("assert that “Mukesh” appears exactly twice in the Author column",async({page})=>{
-    page.goto("https://testautomationpractice.blogspot.com/");
+    await page.goto("https://testautomationpractice.blogspot.com/");
    const allNames = await page.locator("table[name='BookTable'] tbody tr td:nth-child(2)").allInnerTexts();
    const mukeshCount = allNames.filter(name => name.trim() === 'Mukesh').length;
    expect(mukeshCount).toBe(2);
