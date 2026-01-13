@@ -8,8 +8,8 @@ test("Select multiple check boxes and check",async({page})=>{
         const checkBox = page.getByLabel(day,{exact:true});
         await checkBox.check();
         await expect(checkBox).toBeChecked();
+        await checkBox.uncheck()
     }
-    await page.screenshot({path:'screenshots/checkBoxes1.png'});
-    
+    await page.screenshot({path:'screenshots/checkBoxes1.png'})
 
 })
